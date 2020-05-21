@@ -1,0 +1,250 @@
+Linux Cheat Sheet ---------
+
+openSUSE  Cheat Sheet
+YaST Administration Tool
+
+Run YaST using Qt GUI
+
+# yast –-qt
+
+Run YaST using Gtk GUI
+
+# yast --gtk
+
+Run YaST in text-mode
+
+# yast --ncurses
+
+List available YaST modules
+
+# yast -l
+
+Use modules
+
+# yast <modulename>
+
+ZYpp Package Management
+
+List repositories
+
+# zypper lr
+
+Add repository
+
+# zypper ar -f <URL> <alias>
+
+Refresh repositories
+
+# zypper ref
+
+Update installed packages
+
+# zypper up
+
+Perform a distribution upgrade
+
+# zypper dup
+
+Package information
+
+# zypper if <package name>
+
+Package search
+
+# zypper se <package, pattern or dependancy name>
+
+Which package owns a file
+
+# zypper se --provides <file path>
+
+List files in package
+
+$ rpm -ql <package name>
+
+Generic Cheat Sheet-------
+Network 
+
+View network interfaces
+
+$ ip a
+$ iwconfig
+
+Show routes
+
+$ ip ru; ip route show table all
+
+Show open TCP/UDP ports
+
+# ss -anptu
+
+Show all open ports
+
+# ss -anp
+
+Test host availability
+
+$ ping hostname
+
+Change host name
+
+# hostnamectl set-hostname machine.network.name
+
+Services
+
+List all services
+
+# systemctl list-units --type service
+
+Service status
+
+# systemctl status <service name>
+
+Start/Stop/Restart service
+
+# systemctl start <service name>
+# systemctl stop <service name>
+# systemctl restart <service name>
+
+Show overriden config files
+
+# systemd-delta
+
+Anaylze boot times
+
+# systemd-analyze blame
+# systemd-analyze plot >filename.svg
+
+Show the journal information
+
+# journalctl -u <service name>
+# journalctl -f (follow the output of the journal, similar to 'old' tail -f /var/log/messages)
+# journalctl -b (only show messages since last boot)
+
+Manage Time and Date
+
+# timedatectl
+
+CPU & Memory information
+
+View CPU details
+
+$ lscpu
+$ less /proc/cpuinfo
+$ uname -a
+
+Show running processes
+
+$ ps -ef
+$ pstree
+$ top -c
+
+Show memory use
+
+$ less /proc/meminfo
+$ free
+
+Enable/disable swap
+
+$ swapon -a
+$ swapoff -a
+
+Show all open files & directories
+
+# lsof | less
+# lsof | grep -i filename
+
+File Systems
+
+List disks & partitions
+
+# fdisk -l
+# fdisk -l /dev/<h/s>d<a/z>
+
+List mounted file systems
+
+$ lsblk
+$ findmnt
+$ less /proc/self/mountinfo
+
+Mount a partition
+
+# mount -t <type> <device> <mount point>
+
+Mount a CD/DVD iso image
+
+# mount -t iso9660 -o loop dvd-image.iso <mount point>
+
+Unmount file systems
+
+# umount /dev/<device>
+# umount /<mount point>
+
+Inode and disk space usage combined, or output per field type
+
+# df --o -h
+# df --output=target,fstype,pcent
+
+space occupied by a file or directory
+
+# du -h
+
+Show all directories occupying more space than 10M
+
+# du -h -t10M
+
+Accounts
+
+Create user account
+
+# useradd <name>
+
+-u UID
+-g GID
+-d home directory
+-c full user name
+-s default shell
+Delete user account
+
+# userdel <name>
+
+Change user password
+
+# passwd <name>
+
+Modify user account
+
+# usermod <options> <name>
+
+Build Service
+
+Branch & Checkout a Package
+
+$ osc bco <source project> <source package>
+
+Commit changes to package
+
+$ osc commit -m "<comment>"
+
+Submit changed package
+
+$ osc sr
+
+Filesystem layout
+
+    /bin – Contains useful commands that are used both user and administrators.
+    /boot – This directory contains the boot loader and the Linux kernel.
+    /dev – Contains the special device files for all the devices.
+    /etc – This directory contains the host-specific configuration files for your system.
+    /home – Linux is a multi-user environment so each user is also assigned a specific directory which is accessible only to them and the system administrator.
+    /lib* – Contains shared libraries that are required by system programs.
+    /mnt – A generic mount point.
+    /opt – Contains third-party software that is not part of openSUSE.
+    /proc – Pseudo-file system containing files related to processes and kernel configuration
+    /root – Home directory of the user root.
+    /run – Files the system creates during the course of its operation, and which do not persist across reboots.
+    /sbin – Contains binaries that are essential to the working of the system.
+    /srv – Contains site-specific data which is served by this system.
+    /sys – Pseudo filesystem containing files pertaining to kernel configuration and system state
+    /tmp – Directory to hold temporary files.
+    /usr – Directory contains system files and directories shared by all users.
+    /var – Contains files to which the system writes data during the course of its operation.
